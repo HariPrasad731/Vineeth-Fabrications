@@ -1,0 +1,241 @@
+.projects-section {
+  position: relative;
+  z-index: 5;
+  padding: 4rem 1.25rem;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(103, 232, 249, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(180deg, #050914 0%, #07111f 52%, #050914 100%);
+}
+
+.projects-container {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.projects-header {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: end;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.projects-title-block {
+  max-width: 760px;
+}
+
+.projects-eyebrow {
+  display: inline-flex;
+  margin-bottom: 0.85rem;
+  color: #67e8f9;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.projects-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -0.045em;
+}
+
+.projects-description {
+  justify-self: end;
+  max-width: 420px;
+  margin: 0 0 0.25rem;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  text-align: right;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.project-card {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1.35rem;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.022)
+    ),
+    rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(103, 232, 249, 0.28);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.project-image-wrap {
+  position: relative;
+  height: 160px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.project-image-wrap::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(
+    180deg,
+    rgba(5, 9, 20, 0.05),
+    rgba(5, 9, 20, 0.68)
+  );
+}
+
+.project-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.88;
+  transform: scale(1);
+  transition:
+    transform 600ms ease,
+    opacity 220ms ease;
+}
+
+.project-card:hover .project-image {
+  opacity: 1;
+  transform: scale(1.07);
+}
+
+.project-category {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 2;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(103, 232, 249, 0.25);
+  border-radius: 999px;
+  background: rgba(2, 6, 23, 0.65);
+  color: #a5f3fc;
+  font-size: 0.68rem;
+  font-weight: 800;
+  backdrop-filter: blur(16px);
+}
+
+.project-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.project-location {
+  display: inline-flex;
+  margin-bottom: 0.5rem;
+  color: #67e8f9;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-content h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.05rem;
+  line-height: 1.22;
+  font-weight: 850;
+}
+
+.project-content p {
+  margin: 0.65rem 0 0;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding-top: 0.85rem;
+  color: #a5f3fc;
+  font-size: 0.78rem;
+  font-weight: 800;
+  transition:
+    color 180ms ease,
+    gap 180ms ease;
+}
+
+.project-link:hover {
+  gap: 0.7rem;
+  color: #ffffff;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .projects-header {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .projects-description {
+    justify-self: start;
+    max-width: 650px;
+    text-align: left;
+  }
+
+  .projects-title {
+    font-size: clamp(1.9rem, 8vw, 3rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-section {
+    padding: 3.5rem 1rem;
+  }
+
+  .project-image-wrap {
+    height: 190px;
+  }
+
+  .project-content h3 {
+    font-size: 1.12rem;
+  }
+
+  .project-content p {
+    font-size: 0.85rem;
+  }
+}
