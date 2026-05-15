@@ -30,7 +30,7 @@ const contactDetails = [
   {
     icon: <MailIcon />,
     label: "Email",
-    value: "vineethfabrications@example.com",
+    value: "vineethfabrications@gmail.com",
     href: "mailto:vineethfabrications@example.com",
   },
   {

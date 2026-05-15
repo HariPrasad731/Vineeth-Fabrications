@@ -17,15 +17,9 @@
 }
 
 .team-header {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  align-items: end;
-  gap: 3rem;
-  margin-bottom: 2rem;
-}
-
-.team-title-block {
-  max-width: 760px;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
 }
 
 .team-eyebrow {
@@ -41,182 +35,121 @@
 .team-title {
   margin: 0;
   color: #ffffff;
-  font-size: clamp(1.9rem, 3vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 1.05;
   font-weight: 900;
   letter-spacing: -0.045em;
 }
 
 .team-description {
-  justify-self: end;
-  max-width: 430px;
-  margin: 0 0 0.25rem;
+  max-width: 560px;
+  margin: 1rem auto 0;
   color: #94a3b8;
   font-size: 0.95rem;
   line-height: 1.65;
-  text-align: right;
 }
 
 .team-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
+  align-items: start;
 }
 
-.team-card {
-  display: flex;
-  min-height: 100%;
-  flex-direction: column;
+.team-profile {
+  display: grid;
+  justify-items: center;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.team-circle {
+  display: grid;
+  width: 145px;
+  height: 145px;
+  place-items: center;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 1.35rem;
+  border: 1px solid rgba(103, 232, 249, 0.28);
+  border-radius: 999px;
   background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.06),
-      rgba(255, 255, 255, 0.022)
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(103, 232, 249, 0.2),
+      transparent 58%
     ),
-    rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+    rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.24),
+    inset 0 0 0 8px rgba(255, 255, 255, 0.025);
   transition:
     transform 220ms ease,
     border-color 220ms ease,
-    background 220ms ease;
+    box-shadow 220ms ease;
 }
 
-.team-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(103, 232, 249, 0.28);
-  background: rgba(255, 255, 255, 0.05);
+.team-profile:hover .team-circle {
+  transform: translateY(-6px) scale(1.04);
+  border-color: rgba(103, 232, 249, 0.52);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(103, 232, 249, 0.12),
+    inset 0 0 0 8px rgba(255, 255, 255, 0.035);
 }
 
-.team-image-wrap {
-  position: relative;
-  height: 270px;
-  overflow: hidden;
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(103, 232, 249, 0.16),
-      transparent 58%
-    ),
-    rgba(2, 6, 23, 0.45);
+.team-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 16%;
+  transform: scale(1.08);
+  transition: transform 600ms ease;
 }
 
-.team-image-wrap::after {
-  position: absolute;
-  inset: 0;
-  content: "";
-  background: linear-gradient(
-    180deg,
-    rgba(5, 9, 20, 0.02),
-    rgba(5, 9, 20, 0.72)
-  );
+.team-profile:hover .team-image {
+  transform: scale(1.14);
 }
 
-.team-placeholder,
-.team-modal-placeholder {
+.team-initials {
   display: grid;
   width: 100%;
   height: 100%;
   place-items: center;
-}
-
-.team-placeholder {
-  position: relative;
-  z-index: 2;
-}
-
-.team-placeholder span,
-.team-modal-placeholder span {
-  display: grid;
-  width: 7rem;
-  height: 7rem;
-  place-items: center;
-  border: 1px solid rgba(103, 232, 249, 0.28);
-  border-radius: 999px;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(103, 232, 249, 0.18),
-      rgba(255, 255, 255, 0.04)
-    ),
-    rgba(2, 6, 23, 0.6);
   color: #a5f3fc;
-  font-size: 2.2rem;
+  font-size: 2.25rem;
   font-weight: 900;
   letter-spacing: -0.04em;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
 }
 
-.team-details-btn {
-  position: absolute;
-  left: 50%;
-  bottom: 1rem;
-  z-index: 3;
-  width: calc(100% - 2rem);
-  padding: 0.78rem 1rem;
-  border: 1px solid rgba(103, 232, 249, 0.28);
-  border-radius: 1rem;
-  background: rgba(2, 6, 23, 0.75);
-  color: #a5f3fc;
-  font-size: 0.85rem;
-  font-weight: 850;
-  cursor: pointer;
-  backdrop-filter: blur(18px);
-  transform: translateX(-50%);
-  transition:
-    background 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
-}
-
-.team-details-btn:hover {
-  background: #67e8f9;
-  color: #020617;
-  transform: translateX(-50%) translateY(-2px);
-}
-
-.team-content {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding: 1rem;
-}
-
-.team-experience {
-  display: inline-flex;
-  width: fit-content;
-  margin-bottom: 0.75rem;
-  padding: 0.35rem 0.7rem;
-  border: 1px solid rgba(103, 232, 249, 0.22);
-  border-radius: 999px;
-  color: #a5f3fc;
-  font-size: 0.68rem;
-  font-weight: 800;
-}
-
-.team-content h3 {
-  margin: 0;
+.team-profile h3 {
+  margin: 1rem 0 0;
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.2;
   font-weight: 850;
 }
 
-.team-role {
-  margin: 0.45rem 0 0;
-  color: #67e8f9;
+.team-profile p {
+  margin: 0.35rem 0 0;
+  color: #94a3b8;
   font-size: 0.82rem;
-  font-weight: 800;
+  line-height: 1.4;
 }
 
-.team-short-info {
-  margin: 0.75rem 0 0;
-  color: #94a3b8;
-  font-size: 0.86rem;
-  line-height: 1.55;
+.team-view-text {
+  display: inline-flex;
+  margin-top: 0.65rem;
+  color: #67e8f9;
+  font-size: 0.74rem;
+  font-weight: 850;
+  transition: color 180ms ease;
+}
+
+.team-profile:hover .team-view-text {
+  color: #ffffff;
 }
 
 .team-modal-overlay {
@@ -286,6 +219,48 @@
     rgba(2, 6, 23, 0.55);
 }
 
+.team-modal-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.team-modal-placeholder {
+  display: grid;
+  width: 100%;
+  min-height: 440px;
+  place-items: center;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(103, 232, 249, 0.18),
+      transparent 58%
+    ),
+    rgba(2, 6, 23, 0.55);
+}
+
+.team-modal-placeholder span {
+  display: grid;
+  width: 8rem;
+  height: 8rem;
+  place-items: center;
+  border: 1px solid rgba(103, 232, 249, 0.28);
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(103, 232, 249, 0.18),
+      rgba(255, 255, 255, 0.04)
+    ),
+    rgba(2, 6, 23, 0.6);
+  color: #a5f3fc;
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
 .team-modal-content {
   padding: 2rem;
 }
@@ -340,33 +315,19 @@
   font-weight: 700;
 }
 
-@media (min-width: 768px) {
-  .team-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 900px) {
-  .team-header {
+  .team-grid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .team-description {
-    justify-self: start;
-    max-width: 650px;
-    text-align: left;
-  }
-
-  .team-title {
-    font-size: clamp(1.9rem, 8vw, 3rem);
+    gap: 2.25rem;
   }
 
   .team-modal-grid {
     grid-template-columns: 1fr;
   }
 
-  .team-modal-image-wrap {
+  .team-modal-image-wrap,
+  .team-modal-image,
+  .team-modal-placeholder {
     min-height: 320px;
   }
 }
@@ -376,14 +337,16 @@
     padding: 3.5rem 1rem;
   }
 
-  .team-image-wrap {
-    height: 240px;
+  .team-header {
+    margin-bottom: 2.5rem;
   }
 
-  .team-placeholder span,
-  .team-modal-placeholder span {
-    width: 5.8rem;
-    height: 5.8rem;
+  .team-circle {
+    width: 125px;
+    height: 125px;
+  }
+
+  .team-initials {
     font-size: 1.8rem;
   }
 
@@ -391,7 +354,15 @@
     padding: 1.4rem;
   }
 
-  .team-modal-image-wrap {
+  .team-modal-image-wrap,
+  .team-modal-image,
+  .team-modal-placeholder {
     min-height: 260px;
+  }
+
+  .team-modal-placeholder span {
+    width: 6rem;
+    height: 6rem;
+    font-size: 2rem;
   }
 }

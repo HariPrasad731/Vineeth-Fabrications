@@ -1,6 +1,9 @@
 import { useState } from "react";
 import "./Team.css";
 
+import someshImage from "../assets/Somesh.png";
+import praveenImage from "../assets/Praveen.png";
+
 const teamMembers = [
   {
     name: "A Vineeth",
@@ -24,6 +27,7 @@ const teamMembers = [
   {
     name: "P Somesh",
     initials: "PS",
+    image: someshImage,
     role: "Senior HVAC Worker",
     experience: "10+ Years Experience",
     shortInfo:
@@ -42,6 +46,7 @@ const teamMembers = [
   {
     name: "K Praveen",
     initials: "KP",
+    image: praveenImage,
     role: "HVAC Technician",
     experience: "6+ Years Experience",
     shortInfo:
@@ -70,46 +75,42 @@ export default function Team() {
     <section id="team" className="team-section">
       <div className="team-container">
         <div className="team-header">
-          <div className="team-title-block">
-            <span className="team-eyebrow">Our Team</span>
+          <span className="team-eyebrow">Our Team</span>
 
-            <h2 className="team-title">
-              Experienced Hands Behind
-              <br />
-              Every Quality Project
-            </h2>
-          </div>
+          <h2 className="team-title">Meet The Team</h2>
 
           <p className="team-description">
-            Our team combines field experience, site discipline, and practical
-            execution to deliver reliable HVAC ducting and fabrication work.
+            Experienced professionals behind our HVAC ducting, fabrication, and
+            on-site project execution.
           </p>
         </div>
 
         <div className="team-grid">
           {teamMembers.map((member) => (
-            <article className="team-card" key={member.name}>
-              <div className="team-image-wrap">
-                <div className="team-placeholder">
-                  <span>{member.initials}</span>
-                </div>
-
-                <button
-                  type="button"
-                  className="team-details-btn"
-                  onClick={() => setSelectedMember(member)}
-                >
-                  View Details
-                </button>
+            <button
+              type="button"
+              className="team-profile"
+              key={member.name}
+              onClick={() => setSelectedMember(member)}
+              aria-label={`View details of ${member.name}`}
+            >
+              <div className="team-circle">
+                {member.image ? (
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="team-image"
+                  />
+                ) : (
+                  <span className="team-initials">{member.initials}</span>
+                )}
               </div>
 
-              <div className="team-content">
-                <span className="team-experience">{member.experience}</span>
-                <h3>{member.name}</h3>
-                <p className="team-role">{member.role}</p>
-                <p className="team-short-info">{member.shortInfo}</p>
-              </div>
-            </article>
+              <h3>{member.name}</h3>
+              <p>{member.role}</p>
+
+              <span className="team-view-text">View Details</span>
+            </button>
           ))}
         </div>
       </div>
@@ -131,9 +132,17 @@ export default function Team() {
 
             <div className="team-modal-grid">
               <div className="team-modal-image-wrap">
-                <div className="team-modal-placeholder">
-                  <span>{selectedMember.initials}</span>
-                </div>
+                {selectedMember.image ? (
+                  <img
+                    src={selectedMember.image}
+                    alt={selectedMember.name}
+                    className="team-modal-image"
+                  />
+                ) : (
+                  <div className="team-modal-placeholder">
+                    <span>{selectedMember.initials}</span>
+                  </div>
+                )}
               </div>
 
               <div className="team-modal-content">
